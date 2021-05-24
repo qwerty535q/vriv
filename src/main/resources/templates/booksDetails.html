@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div th:insert="header :: header" ></div>
+
+<div class = "container mt-5">
+
+    <div th:each = "element : ${post}" class = "alert alert-info mt-2">
+        <h3 th:text = "${element.title}"></h3>
+        <p th:text = "${element.full_text}"></p>
+        <p th:text = "${element.views}"></p>
+        <a th:href = "'/books/' + ${element.id} + '/edit'" class="btn btn-warning">remake</a>
+        <form th:action="'/books/' + ${element.id} + '/remove'" method="post"></br>
+        <button class="btn btn-warning" type="submit">delete</button>
+        </form>
+    </div>
+
+</div>
+
+<div th:insert="footer :: footer"></div>
+
+</body>
+</html>
